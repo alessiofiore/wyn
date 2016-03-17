@@ -1,0 +1,13 @@
+# Start server
+php app/console server:run
+
+# Create entity from table
+php app/console doctrine:mapping:import --force WynBundleTestBundle xml
+php app/console doctrine:generate:entities WynBundleTestBundle
+php app/console generate:doctrine:crud --entity=WynBundleTestBundle:User --format=annotation --with-write --no-interaction
+
+
+
+
+# Create table from entity 
+php app/console doctrine:schema:update --force
